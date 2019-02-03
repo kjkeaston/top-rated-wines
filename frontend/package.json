@@ -1,0 +1,46 @@
+{
+  "_from": "https://github.com/jqwidgets/frontend/tarball/master",
+  "_id": "frontend@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-TzCrV6rvvYS5En18r6qrM2T7Rz24DQomJCLmQ2j/V08534YPijH5CjTAKJcDI8vNHM+HgyNS3YFxDVd0mHWSqg==",
+  "_location": "/frontend/frontend",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "frontend@https://github.com/jqwidgets/frontend/tarball/master",
+    "name": "frontend",
+    "escapedName": "frontend",
+    "rawSpec": "https://github.com/jqwidgets/frontend/tarball/master",
+    "saveSpec": "https://github.com/jqwidgets/frontend/tarball/master",
+    "fetchSpec": "https://github.com/jqwidgets/frontend/tarball/master"
+  },
+  "_requiredBy": [],
+  "_resolved": "https://github.com/jqwidgets/frontend/tarball/master",
+  "_shasum": "7d2a1b35e0af075c74da15c045aaddabd7a70e35",
+  "_spec": "frontend@https://github.com/jqwidgets/frontend/tarball/master",
+  "_where": "/usr/local/lib/node_modules/frontend",
+  "bundleDependencies": false,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.2.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.7",
+    "react": "16.4.1",
+    "react-checkbox-tree": "^1.5.1",
+    "react-dom": "16.4.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4"
+  },
+  "deprecated": false,
+  "description": "Please refer to its documentation:   - [Getting Started](https://github.com/jqwidgets/frontend/blob/master/README.md#getting-started)    - [jQWidgets React Documentation](http://www.jqwidgets.com/reactjs-components-documentation/)",
+  "name": "frontend",
+  "private": true,
+  "scripts": {
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "start": "react-scripts start",
+    "test": "react-scripts test --env=jsdom"
+  },
+  "version": "1.0.0",
+  "proxy": "http://localhost:8080/"
+}

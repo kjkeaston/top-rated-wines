@@ -1,0 +1,17 @@
+{
+  "name": "top-rated-wines",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"cd frontend && npm start\" \"cd backend && nodemon\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kyle Easton",
+  "license": "ISC",
+  "dependencies": {
+    "client": "0.0.1",
+    "concurrently": "^4.1.0",
+    "create-jqwidgets-react-app": "0.0.2"
+  }
+}
