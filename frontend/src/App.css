@@ -1,12 +1,23 @@
-.App {
+.app {
   text-align: center;
 }
 
-.App-header {
-  margin: 20px 0px 20px 0px;
-
+.app-header {
+  margin: 30px 0px 30px 0px;
 }
 
-.App-link {
-  color: #61dafb;
+.header-title {
+  margin-bottom: 15px;
+}
+
+.wine-form-label {
+  font-size: 19px;
+}
+
+.page-change-btn-row {
+  margin-top: 10px;
+}
+
+.footer {
+  margin-top: 15px;
 }

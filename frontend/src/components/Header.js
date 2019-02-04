@@ -42,9 +42,9 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <header className="App-header">
+        <header className="app-header">
           <div className="row">
-            <div className="col-md-12">
+            <div className="col-md-12 header-title">
               <h1>Top Rated U.S. Wines Under $30</h1>
             </div>
           </div>
@@ -52,10 +52,10 @@ class Header extends Component {
           { this.state.showCheckMarkModal ? <CheckMarkModal close={ this.closeCheckMarkModal }/> : null }
           <div className="row">
             <div className="col-6 text-center">
-              <button onClick={ this.showAddWineModal } ref="about" className="btn btn-primary">Add a new Wine</button>
+              <button onClick={ this.showAddWineModal } className="btn btn-primary">Add a new Wine</button>
             </div>
             <div className="col-6 text-center">
-              <button onClick={ this.showCheckMarkModal } ref="instructions" className="btn btn-info">Test some checkmarks</button>
+              <button onClick={ this.showCheckMarkModal } className="btn btn-info">Test Checkmarks</button>
             </div>
           </div>
         </header>

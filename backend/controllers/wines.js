@@ -9,12 +9,12 @@ function index(req, res) {
 }
 
 function indexByPage(req, res) {
-  console.log("index function")
   var pageOptions = {
     page: req.query.page,
-    limit: req.query.limit || 2
+    limit: req.query.limit || 15
   } 
     Wine.find()
+    .sort( { _id: -1 } )
     .skip(pageOptions.page*pageOptions.limit)
     .limit(pageOptions.limit)
     .exec(function (err, doc) {

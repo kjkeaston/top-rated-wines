@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import CheckboxTree from 'react-checkbox-tree';
-import 'react-checkbox-tree/lib/react-checkbox-tree.css';
+import React, { Component } from "react";
+import CheckboxTree from "react-checkbox-tree";
+import "react-checkbox-tree/lib/react-checkbox-tree.css";
 
-const parents = ['Parent 1', 'Parent 2', 'Parent 3', 'Parent 4', 'Parent 5', 'Parent 6', 'Parent 7', 'Parent 8', 'Parent 9', 'Parent 10'];
+const parents = ["Parent 1", "Parent 2", "Parent 3", "Parent 4", "Parent 5", "Parent 6", "Parent 7", "Parent 8", "Parent 9", "Parent 10"];
 
-const children = ['Child 1', 'Child 2', 'Child 3'];
+const children = ["Child 1", "Child 2", "Child 3"];
 
 class CheckMarkModal extends Component {
   constructor() {
@@ -36,11 +36,11 @@ class CheckMarkModal extends Component {
 
   render() {
     return (
-      <div className="modal fade show" style={{display: 'block'}}>
+      <div className="modal fade show" style={{display: "block"}}>
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="CheckMarkModalLabel">Test Some Checkmarks</h5>
+              <h4 className="modal-title" id="CheckMarkModalLabel">Test Some Checkmarks</h4>
               <button type="button" className="close" onClick={ this.props.close }>
                 <span aria-hidden="true">&times;</span>
               </button>

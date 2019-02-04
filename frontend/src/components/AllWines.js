@@ -25,8 +25,8 @@ class AllWines extends Component {
     fetch("http://localhost:8080/api/wines").then( (res) => {
       return res.json();
     }).then( (wines) => {
-      console.log("This is wine array >>> ", wines)
-      let numOfPages = Math.ceil(wines.length / 2)
+      console.log("This is wine array >>> ", wines, wines.length)
+      let numOfPages = Math.ceil(wines.length / 15)
       this.setState({
         numOfPages: numOfPages
       });
@@ -116,6 +116,11 @@ class AllWines extends Component {
         this.refs.myGrid.updatebounddata();
       }
     })
+    this.refs.csvExport.on('click', () => {
+      this.refs.myGrid.exportdata('csv', 'jqxGrid');
+    });
+
+
   }
 
 
@@ -143,15 +148,15 @@ class AllWines extends Component {
         //   console.log(pagenum, pagesize, oldpagenum)
         //             // callback called when a page or page size is changed.
         // },
-        addrow: (rowid, rowdata, position, commit) => {
-          console.log("new wine buttn clicked")
-          console.log("row data is: ", rowdata)
-          // synchronize with the server - send insert command
-          // call commit with parameter true if the synchronization with the server is successful 
-          //and with parameter false if the synchronization failed.
-          // you can pass additional argument to the commit callback which represents the new ID if it is generated from a DB.
-          commit(true);
-        },
+        // addrow: (rowid, rowdata, position, commit) => {
+        //   console.log("new wine buttn clicked")
+        //   console.log("row data is: ", rowdata)
+        //   // synchronize with the server - send insert command
+        //   // call commit with parameter true if the synchronization with the server is successful 
+        //   //and with parameter false if the synchronization failed.
+        //   // you can pass additional argument to the commit callback which represents the new ID if it is generated from a DB.
+        //   commit(true);
+        // },
         updaterow: (rowid, rowdata, commit) => {
           console.log(rowid, rowdata)
           axios.put(`http://localhost:8080/api/wines/${rowid}`, rowdata)
@@ -171,20 +176,20 @@ class AllWines extends Component {
 
       let dataAdapter = new jqx.dataAdapter(source);
 
-      let rendertoolbar = (toolbar) => {
-        let container = document.createElement('div');
-        container.style.margin = '5px';
-        let buttonContainer1 = document.createElement('div');
-        container.appendChild(buttonContainer1);
-        toolbar[0].appendChild(container);
+      // let rendertoolbar = (toolbar) => {
+      //   let container = document.createElement('div');
+      //   container.style.margin = '5px';
+      //   let buttonContainer1 = document.createElement('div');
+      //   container.appendChild(buttonContainer1);
+      //   toolbar[0].appendChild(container);
 
-        let addRowButton = ReactDOM.render(<JqxButton value='Add New Wine Review' style={{ float: 'left' }}/>, buttonContainer1);
-        addRowButton.on('click', () => {
-          console.log("add clicked")
-          let datarow = "Hello";
-          this.refs.myGrid.addrow(null, datarow);
-        });
-      };
+      //   let addRowButton = ReactDOM.render(<JqxButton value='Add New Wine Review' style={{ float: 'left' }}/>, buttonContainer1);
+      //   addRowButton.on('click', () => {
+      //     console.log("add clicked")
+      //     let datarow = "Hello";
+      //     this.refs.myGrid.addrow(null, datarow);
+      //   });
+      // };
 
       // const cellsrenderer = (row, columnfield, value, defaulthtml, columnproperties, rowdata) => {
       //     if (value < 20) {
@@ -198,38 +203,42 @@ class AllWines extends Component {
         [
           { text: 'Wine Review',
             datafield: 'description',
-            width: 250
+            width: 300
           },
           { text: 'Points',
             datafield: 'points',
             align: 'center',
             cellsalign: 'center',
+            width: 100
           },
           { text: 'Price',
             datafield: 'price',
             align: 'center',
             cellsalign: 'center',
-            cellsformat: 'c'
+            cellsformat: 'c',
+            width: 100
           },
           { text: 'State',
             datafield: 'state',
             align: 'center',
             cellsalign: 'center',
-            width: 150 
+            width: 150
           },
           { text: 'Region',
             datafield: 'region',
             align: 'center',
             cellsalign: 'center',
-            width: 200
+            width: 150
           },
           { text: 'Variety',
             datafield: 'variety',
             align: 'center',
             cellsalign: 'center',
-            width: 200
+            width: 150
           },
-          { text: 'Edit/Delete Wine', datafield: 'Edit', columntype: 'button',
+          { text: 'Edit/Delete Wine', datafield: 'Edit', columntype: 'button', align: 'center',
+            cellsalign: 'center',
+            width: 150,
             cellsrenderer: () => {
                 return 'Edit/Delete';
             }, buttonclick: (row) => {
@@ -255,78 +264,109 @@ class AllWines extends Component {
       <div className="container">
         <div className="row">
           <div className="col-12">
+            <div style={{ float: 'left', marginLeft: 10, marginBottom: 10}}>
+              <JqxButton value='Export to CSV' ref='csvExport' height={25}/>
+            </div>
             <JqxGrid
             ref='myGrid'
-            width={1200} source={dataAdapter} columns={columns}
+            width={1100} source={dataAdapter} columns={columns}
             pageable={false} autoheight={true} autorowheight={true} sortable={true}
-            altrows={true} enabletooltips={true} editable={false}
-            showtoolbar={true}
-            rendertoolbar={rendertoolbar} />
+            altrows={true} enabletooltips={true} editable={true}
+            />
           </div>
         </div>
-        <div className="row">
+
+        <div className="row page-change-btn-row">
           <div className="col-4 text-right">
-            <JqxButton ref='prevPageBtn' className="btn btn-primary" value='< PREVIOUS PAGE'/>
+            <JqxButton ref='prevPageBtn' className="btn btn-primary" value='< PREVIOUS PAGE' height={30}/>
           </div>
           <div className="col-4 text-center">
             <p>Page {this.state.pageNum} of {this.state.numOfPages} </p>
           </div>
           <div className="col-4 text-left">
-            <JqxButton ref='nextPageBtn' className="btn btn-primary" value='NEXT PAGE >'/>
+            <JqxButton ref='nextPageBtn' className="btn btn-primary" value='NEXT PAGE >' width={131} height={30}/>
           </div>
         </div>
+
         <JqxWindow ref='myWindow'
-          width={350} resizable={false} isModal={true} autoOpen={false} modalOpacity={'0.01'}>
-          <div>EDIT / DELETE WINE</div>
-          <div style={{ overflow: 'hidden' }}>
-            <table>
-              <tbody>
-                <tr>
-                  <td align='right'>Description:</td>
-                  <td align='left'>
-                    <JqxInput ref='description' width={150} height={25}/>
-                  </td>
-                </tr>
-                <tr>
-                  <td align='right'>Points:</td>
-                  <td align='left'>
-                    <JqxInput ref='points' width={150} height={25} />
-                  </td>
-                </tr>
-                <tr>
-                  <td align='right'>Price:</td>
-                  <td align='left'>
-                    <JqxInput ref='price' width={150} height={25} />
-                  </td>
-                </tr>
-                <tr>
-                  <td align='right'>State:</td>
-                  <td align='left'>
-                    <JqxInput ref='state' width={150} height={25} />
-                  </td>
-                </tr>
-                <tr>
-                  <td align='right'>Region:</td>
-                  <td align='left'>
-                    <JqxInput ref='region' width={150} height={25} />
-                  </td>
-                </tr>
-                <tr>
-                  <td align='right'>Variety:</td>
-                  <td align='left'>
-                    <JqxInput ref='variety' width={150} height={25} />
-                  </td>
-                </tr>
-                <tr>
-                  
-                  <td style={{ paddingTop: 10 }} align='left'>
-                    <JqxButton style={{ marginRight: 5, float: 'left' }} ref='SaveBtn' value='Save' />
-                    <JqxButton ref='CancelBtn' value='Cancel' />
-                    <JqxButton className="btn btn-danger" style={{float: 'right'}} ref='DeleteBtn' value='DELETE' />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          width={450} resizable={false} isModal={true} autoOpen={false} modalOpacity={'0.01'}>
+          <h4>EDIT and/or DELETE</h4>
+          <div>
+            <div className="modal-content">
+              <div className="modal-body">
+                <div className="form-group">
+                  <label className="wine-form-label" htmlFor="description">Description/Review</label>
+                  <JqxInput
+                    ref='description'
+                    className="form-control"
+                    id="description"
+                    required />
+                </div>
+                <div className="row">
+                  <div className="form-group col">
+                    <label className="wine-form-label" htmlFor="points">Points</label>
+                    <JqxInput
+                      ref='points'
+                      type="number"
+                      min="75"
+                      max="100"
+                      className="form-control"
+                      id="points"
+                      required/>
+                  </div>
+                  <div className="form-group col">
+                    <label className="wine-form-label" htmlFor="price">Price</label>
+                    <JqxInput
+                      ref="price"
+                      type="number"
+                      min="1"
+                      max="30"
+                      className="form-control"
+                      id="price"
+                      required/>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="form-group col">
+                    <label className="wine-form-label" htmlFor="state">State</label>
+                    <JqxInput
+                      ref="state"
+                      type="text"
+                      className="form-control"
+                      id="state"
+                      required />
+                  </div>
+                  <div className="form-group col">
+                    <label className="wine-form-label" htmlFor="region">Region</label>
+                    <JqxInput
+                      ref="region"
+                      type="text"
+                      className="form-control"
+                      id="region"
+                      required />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label className="wine-form-label" htmlFor="variety">Variety</label>
+                  <JqxInput
+                    ref="variety"
+                    type="text"
+                    className="form-control"
+                    id="variety"
+                    required />
+                </div>
+              </div>
+              <div className="modal-footer">
+                <div className="col-6 text-left">
+                  <JqxButton ref='SaveBtn' value='Save' 
+                  style={{marginRight: 20, backgroundColor: "#007bff"}} width={65} height={30} className="btn btn-info"/>
+                  <JqxButton ref='CancelBtn' value='Cancel' width={65} height={30} className="btn btn-secondary"/>
+                </div>
+                <div className="col-6 text-right">
+                  <JqxButton ref='DeleteBtn' value='DELETE' style={{backgroundColor: "#dc3545"}} width={65} height={30} className="btn btn-danger"/>
+                </div>
+              </div>
+            </div>
           </div>
         </JqxWindow>
       </div>
