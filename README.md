@@ -16,6 +16,13 @@ Thanks for checking out my repo! This MERN app is using a data set obtained from
 * clone repository
 * cd into cloned directory
 * run `npm install` from within directory to install the required dependencies 
-* type `company-miner`, followed by `[file path]`, followed by a supported command, followed by command argument
-* **Example** `$ company-miner /Users/kyleeaston/Desktop/company_data.json locate TX`
-* Run tests with `npm test`
+* run `npm start` from root directory
+ * this should fire up the frontend on PORT:3000 and the backend on PORT:8080
+* Open a new tab within the current terminal session (new tab should still be in root)
+* cd into `backend` from root
+* run `node db/seed.js` to seed your local database with the wine data from the CSV 
+* run `mongod` to fire up the MongoBD database
+* visit `http://localhost:3000/` in your browser to see the running app
+
+### Sending Feedback
+I am always open to [your feedback](https://github.com/kjkeaston/top-rated-wines/issues).
