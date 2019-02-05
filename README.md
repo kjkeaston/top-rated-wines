@@ -1,7 +1,7 @@
 # Top Rated Wines
 Thanks for checking out my repo! This MERN app is using a data set obtained from [Kaggle](https://www.kaggle.com/)
 
-![Example app screenshot](/example_screenshot.png "Title")
+![Example app screenshot](/homepage_example.png "Example Grid View")
 
 ## Features
 * Full CRUD app
