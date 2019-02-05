@@ -1,4 +1,4 @@
-var models = require('../models');
+var models = require("../models");
 var Wine = models.Wine;
 
 function index(req, res) {

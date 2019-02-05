@@ -53,8 +53,6 @@ class Modal extends Component {
   }
 
   submitWineForm(e) {
-    // e.preventDefault();
-    // this.myForm.clear();
     axios.post("http://localhost:8080/api/wines", {
       description: this.state.newFormDescription,
       points: this.state.newFormPoints,

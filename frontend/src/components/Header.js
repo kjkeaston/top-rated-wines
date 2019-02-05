@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import NewWineForm from './NewWineForm';
-import CheckMarkModal from './CheckMarkModal';
+import React, { Component } from "react";
+import NewWineForm from "./NewWineForm";
+import CheckMarkModal from "./CheckMarkModal";
 
 class Header extends Component {
   constructor() {

@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 8080;
-const cors = require('cors');
-const wineRouter = require('./config/routes.js');
+const cors = require("cors");
+const wineRouter = require("./config/routes.js");
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
