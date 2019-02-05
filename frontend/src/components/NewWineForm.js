@@ -132,9 +132,9 @@ class Modal extends Component {
                           value={this.state.newFormState}
                           onChange={this.userAddedState}
                           required>
-                          <option disabled selected>State...</option>
+                          <option disabled defaultValue>State...</option>
                           {stateOptions.map((eachState) => {
-                            return(<option>{eachState}</option>
+                            return(<option key={eachState}>{eachState}</option>
                                 )
                             })
                           }

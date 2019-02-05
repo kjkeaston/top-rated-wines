@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import axios from "axios";
 import JqxGrid, { jqx } from "../assets/jqwidgets-react/react_jqxgrid";
 import JqxButton from "../assets/jqwidgets-react/react_jqxbuttons.js";
 import JqxInput from "../assets/jqwidgets-react/react_jqxinput.js";
-import JqxNumberInput from "../assets/jqwidgets-react/react_jqxnumberinput.js";
 import JqxWindow from "../assets/jqwidgets-react/react_jqxwindow.js";
 
 

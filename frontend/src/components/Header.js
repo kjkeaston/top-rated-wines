@@ -12,7 +12,7 @@ class Header extends Component {
     this.showAddWineModal = this.showAddWineModal.bind(this);
     this.showCheckMarkModal = this.showCheckMarkModal.bind(this);
     this.closeAddWineModal = this.closeAddWineModal.bind(this);
-    this.closeCheckMarkModal = this. closeCheckMarkModal.bind(this);
+    this.closeCheckMarkModal = this.closeCheckMarkModal.bind(this);
   }
 
   showAddWineModal() {
@@ -24,7 +24,7 @@ class Header extends Component {
   showCheckMarkModal() {
     this.setState({
       showCheckMarkModal: true
-    }) 
+    })
   }
 
   closeAddWineModal() {
