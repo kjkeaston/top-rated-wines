@@ -5,7 +5,6 @@ import JqxButton from "../assets/jqwidgets-react/react_jqxbuttons.js";
 import JqxInput from "../assets/jqwidgets-react/react_jqxinput.js";
 import JqxWindow from "../assets/jqwidgets-react/react_jqxwindow.js";
 
-
 class AllWines extends Component {
   constructor() {
     super();
