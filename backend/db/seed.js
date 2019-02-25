@@ -1,6 +1,6 @@
-let db = require("../models");
-const csv = require("csv-parser")
-const fs = require("fs")
+const db = require("../models");
+const csv = require("csv-parser");
+const fs = require("fs");
 let allWines = [];
 
 fs.createReadStream("./wine_data.csv")
@@ -10,11 +10,11 @@ fs.createReadStream("./wine_data.csv")
       allWines.push(data);
     }
     catch(err) {
-      console.log(`There was an ERROR >>> ${err}`)
+      console.log(`There was an ERROR >>> ${err}`);
     }
   })
   .on("end", () => {
-   console.log(allWines)
+   console.log(allWines);
   });
 
 // let testWith3Wines = [

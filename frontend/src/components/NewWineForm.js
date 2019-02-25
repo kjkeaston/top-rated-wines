@@ -5,12 +5,12 @@ class Modal extends Component {
   constructor() {
     super();
     this.state = {
-      newFormDescription:"",
-      newFormPoints:"",
-      newFormPrice:"",
-      newFormState:"",
-      newFormRegion:"",
-      newFormVariety:""
+      newFormDescription: "",
+      newFormPoints: "",
+      newFormPrice: "",
+      newFormState: "",
+      newFormRegion: "",
+      newFormVariety: ""
     }
 
     this.userAddedDescription = this.userAddedDescription.bind(this);
@@ -23,33 +23,27 @@ class Modal extends Component {
   }
 
   userAddedDescription(e) {
-    console.log(e.target.value)
-    this.setState({ newFormDescription: e.target.value })
+    this.setState({ newFormDescription: e.target.value });
   }
 
   userAddedPoints(e) {
-    console.log(e.target.value)
-    this.setState({ newFormPoints: e.target.value })
+    this.setState({ newFormPoints: e.target.value });
   }
 
   userAddedPrice(e) {
-    console.log(e.target.value)
-    this.setState({ newFormPrice: e.target.value })
+    this.setState({ newFormPrice: e.target.value });
   }
 
   userAddedState(e) {
-    console.log(e.target.value)
-    this.setState({ newFormState: e.target.value })
+    this.setState({ newFormState: e.target.value });
   }
 
   userAddedRegion(e) {
-    console.log(e.target.value)
-    this.setState({ newFormRegion: e.target.value })
+    this.setState({ newFormRegion: e.target.value });
   }
 
   userAddedVariety(e) {
-    console.log(e.target.value)
-    this.setState({ newFormVariety: e.target.value })
+    this.setState({ newFormVariety: e.target.value });
   }
 
   submitWineForm(e) {

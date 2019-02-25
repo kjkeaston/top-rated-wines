@@ -1,5 +1,5 @@
-var models = require("../models");
-var Wine = models.Wine;
+const models = require("../models");
+const Wine = models.Wine;
 
 function index(req, res) {
   Wine.find({}, function(err, wines) {
@@ -9,7 +9,7 @@ function index(req, res) {
 }
 
 function indexByPage(req, res) {
-  var pageOptions = {
+  let pageOptions = {
     page: req.query.page,
     limit: req.query.limit || 15
   } 
