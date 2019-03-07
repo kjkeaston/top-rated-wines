@@ -16,15 +16,20 @@ class AllWines extends Component {
     }
   }
 
-  componentDidMount() {
+  getPageCount() {
     fetch("http://localhost:8080/api/wines").then( (res) => {
       return res.json();
-    }).then( (wines) => {
-      let numOfPages = Math.ceil(wines.length / 15)
-      this.setState({
-        numOfPages: numOfPages
+    }).then( (DBcount) => {
+        console.log(DBcount)
+        let numOfPages = Math.ceil(DBcount / 15)
+        this.setState({
+          numOfPages: numOfPages
       });
     })
+  }
+
+  componentDidMount() {
+    this.getPageCount();
     this.refs.myWindow.on("open", () => {
       this.refs.description.selectAll();
     });
@@ -58,14 +63,8 @@ class AllWines extends Component {
           this.refs.myGrid.deleterow(id);
           this.refs.myWindow.hide();
         }
-        fetch("http://localhost:8080/api/wines").then( (res) => {
-          return res.json();
-        }).then( (wines) => {
-          let numOfPages = Math.ceil(wines.length / 2)
-            this.setState({
-              numOfPages: numOfPages
-            });
-        });
+        // Recount number of pages after a delete
+        this.getPageCount();
       } else {
         this.refs.myWindow.hide();
       }

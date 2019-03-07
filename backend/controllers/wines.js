@@ -1,12 +1,44 @@
 const models = require("../models");
 const Wine = models.Wine;
 
+// function countDB() {
+//   Wine.count().then((count) => {
+//     console.log("DB COUNT >>> ", count);
+//     return count;
+//   });
+// }
+
+// function index(req, res) {
+//   Wine.countDocuments().then((count) => {
+//     res.json(count);
+//   });
+// }
+
+// function index(req, res) {
+//   Wine.countDocuments().then((count) => {
+//     res.json(count)
+//   })
+// }
+
 function index(req, res) {
-  Wine.find({}, function(err, wines) {
-    if (err) res.send(err);
-    else res.json(wines);
+  Wine.countDocuments().exec((err, count) => {
+    if (err) {
+      res.send(err);
+      return;
+    }
+    console.log("COUNT >>> ", count)
+    res.json(count);
   });
 }
+
+// function index(req, res) {
+//   Wine.find({}, function(err, wines) {
+//     if (err) res.send(err);
+//     else {
+//       res.json(wines);
+//     }
+//   });
+// }
 
 function indexByPage(req, res) {
   let pageOptions = {
