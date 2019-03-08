@@ -2,20 +2,10 @@ const db = require("../models");
 const csv = require("csv-parser");
 const fs = require("fs");
 let allWines = [];
- 
-// fs.createReadStream('./wine_list_big.csv')
-//   .pipe(csv())
-//   .on('data', (data) => allWines.push(data))
-//   .on('end', () => {
-//     console.log(allWines.length);
-//   });
 
-
-// fs.createReadStream("./big_list.csv")
 fs.createReadStream("./wine_data.csv")
   .pipe(csv({delimiter: ','}))
   .on('data', function(csvrow) {
-  // console.log(csvrow);
   //do something with csvrow
     allWines.push(csvrow);
   })

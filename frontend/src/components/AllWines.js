@@ -103,7 +103,6 @@ class AllWines extends Component {
     });
   }
 
-
   render() {
     let source =
       {
@@ -173,7 +172,7 @@ class AllWines extends Component {
             }, buttonclick: (row) => {
                 // open the popup window when the user clicks a button.
                 this.setState({
-                    editrow: row
+                  editrow: row
                 });
                 this.refs.myWindow.position({ x: 68, y: this.refs.myGrid.offsetTop });
                 // get the clicked row's data and initialize the input fields.
